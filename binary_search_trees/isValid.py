@@ -10,17 +10,13 @@ from BST import BST
 
 def isValid(tree: BST):
 
-    node = tree
-    return isNodeValid(node)
+def isValid(tree: BST):
+    return isNodeValid(tree, float('-inf'), float('inf'))
 
-def isNodeValid(node):
-    left_node = node.left
-    right_node = node.right
-    if left_node.value >= node.value:
-        return False
-    if right_node.value < node.value:
-        return False
-    if node == None:
+def isNodeValid(node, min_value, max_value):
+    if node is None:
         return True
-    return isNodeValid(left_node) and isNodeValid(right_node)
+    if not min_value < node.value < max_value:
+        return False
+    return isNodeValid(node.left, min_value, node.value) and isNodeValid(node.right, node.value, max_value)
 
