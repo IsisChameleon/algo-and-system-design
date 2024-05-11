@@ -30,7 +30,14 @@ class TestATMStatePattern(unittest.TestCase):
         # Assuming the card is inserted, the pin is entered and the state is set to AuthorizedState
         atm.current_state = authorized_state
         atm.card_details = CardDetails(card_number='123456789', pin='1234')
-        with self.assertRaisesRegex(Exception, "PIN already entered"):
+        # No exception should be raised here as the state is AuthorizedState
+        # and the pin has been correctly entered.
+        authorized_state.enter_pin('1234')
+        # Instead of expecting an exception, we should expect a message indicating
+        # that the PIN has already been entered.
+        with self.assertLogs(level='INFO') as log:
+            authorized_state.enter_pin('1234')
+        self.assertIn("PIN already entered", log.output[0])
             authorized_state.enter_pin('1234')
         authorized_state.request_transaction(Transaction(amount=100, transaction_type='withdraw'))
         self.assertIsInstance(atm.current_state, NoCardState)
