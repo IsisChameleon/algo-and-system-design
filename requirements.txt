@@ -1,0 +1,5 @@
+numpy
+matplotlib
+ipyevents #snake game
+ipywidgets #snake game
+pydantic
