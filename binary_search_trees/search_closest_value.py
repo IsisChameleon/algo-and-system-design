@@ -1,4 +1,6 @@
-def findClosestValueInBst(tree, target):
+from BST import BST
+
+def findClosestValueInBst(tree: BST, target):
     # Write your code here.
     node = tree
     best_diff_tuple = (tree, abs(target - tree.value))
@@ -17,10 +19,3 @@ def findClosestValue(node, target, best_diff_tuple):
         return findClosestValue(node.left, target, best_diff_tuple)
     else:
         return best_diff_tuple[0].value
-
-# This is the class of the input tree. Do not edit.
-class BST:
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None

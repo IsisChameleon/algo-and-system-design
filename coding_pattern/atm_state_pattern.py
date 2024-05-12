@@ -83,6 +83,8 @@ class AuthorizedState(ATMState):
 
     def insert_card(self, card_details: CardDetails):
         print("Transaction in process. Eject current card first.")
+        raise Exception("Transaction in process. Eject current card first.")    
+
 
     def eject_card(self):
         print("Card ejected. Session ended.")
@@ -90,6 +92,7 @@ class AuthorizedState(ATMState):
 
     def enter_pin(self, pin: str):
         print("PIN already entered")
+        raise Exception("PIN already entered")  
 
     def request_transaction(self, transaction: Transaction):
         print(f"Transaction processed: {transaction.transaction_type} of ${transaction.amount}")

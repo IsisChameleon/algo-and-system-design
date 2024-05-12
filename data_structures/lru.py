@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, key, value):
+
     """
     A node of a doubly linked list, used to implement the LRU cache.
     """
@@ -10,7 +10,7 @@ class Node:
         self.next = None
 
 class LRUCache:
-    def __init__(self, capacity):
+
     """
     A Least Recently Used (LRU) cache implemented using a hashmap and a doubly linked list.
     """
@@ -26,7 +26,6 @@ class LRUCache:
         self.tail.prev = self.head
 
     def get(self, key: int) -> int:
-    def get(self, key):
         if key in self.hashmap:
             node = self.hashmap[key]
             self._remove(node)
@@ -56,7 +55,6 @@ class LRUCache:
             self._remove(lru)
             del self.hashmap[lru.key]
 
-    def _add(self, node):
     def _add(self, node: Node) -> None:
         # Always add the new node right before the tail
         node.prev = self.tail.prev
@@ -65,10 +63,8 @@ class LRUCache:
         self.tail.prev = node
 
     def _remove(self, node: Node) -> None:
-    def _remove(self, node):
         # Remove an existing node from the linked list
         prev_node = node.prev
         next_node = node.next
         prev_node.next = next_node
         next_node.prev = prev_node
-        next.prev = prev

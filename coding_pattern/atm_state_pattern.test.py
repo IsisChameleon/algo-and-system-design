@@ -37,8 +37,7 @@ class TestATMStatePattern(unittest.TestCase):
         # that the PIN has already been entered.
         with self.assertLogs(level='INFO') as log:
             authorized_state.enter_pin('1234')
-        self.assertIn("PIN already entered", log.output[0])
-            authorized_state.enter_pin('1234')
+            self.assertIn("PIN already entered", log.output[0])
         authorized_state.request_transaction(Transaction(amount=100, transaction_type='withdraw'))
         self.assertIsInstance(atm.current_state, NoCardState)
 

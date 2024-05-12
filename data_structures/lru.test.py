@@ -1,5 +1,5 @@
 import unittest
-from data_structures.lru import LRUCache, Node
+from lru import LRUCache, Node
 
 class TestLRUCache(unittest.TestCase):
 

@@ -1,19 +1,20 @@
-from functools import lru_cache
 
-@lru_cache(maxsize=None)
-def fibonacci(n: int) -> int:
-
-    # Type checking and validation
-
-    # assuming it starts at 0
-    if n == 0:
-        return 0
-
-    
-    if n == 1:
-        return 1
-
-    return fibonacci(n - 1) + fibonacci(n - 2)
+def fibonacci(n: int) -> int:                                                                                                                                                                                         
+      # Type checking and validation                                                                                                                                                                                    
+                                                                                                                                                                                                                        
+      # assuming it starts at 0                                                                                                                                                                                         
+      if n == 0:                                                                                                                                                                                                        
+          return 0                                                                                                                                                                                                      
+                                                                                                                                                                                                                        
+      if n == 1:                                                                                                                                                                                                        
+          return 1                                                                                                                                                                                                      
+                                                                                                                                                                                                                        
+      prev = 0                                                                                                                                                                                                          
+      current = 1                                                                                                                                                                                                       
+      current_index = 1                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                                                                                                               
+      fib = getFibonacci_recursion(current, prev, current_index, n)                                                                                                                                   
+      return fib                                     
 
 def getFibonacci_loop(current: int, prev: int, iteration: int, n: int) -> int: 
     while iteration != n:
@@ -29,5 +30,4 @@ def getFibonacci_recursion(current: int, prev: int, iteration: int, n: int) -> i
         fib = getFibonacci_recursion(current+prev, current, iteration+1, n)
     else:
         fib = current+prev
-    return fib
     return fib

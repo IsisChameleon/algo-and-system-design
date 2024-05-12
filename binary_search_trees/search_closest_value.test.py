@@ -1,13 +1,6 @@
-import program
+from search_closest_value import findClosestValueInBst
+from BST import BST
 import unittest
-
-
-class BST:
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
-
 
 class TestProgram(unittest.TestCase):
     def test_case_1(self):
@@ -21,5 +14,8 @@ class TestProgram(unittest.TestCase):
         root.right.left.right = BST(14)
         root.right.right = BST(22)
         expected = 13
-        actual = program.findClosestValueInBst(root, 12)
+        actual = findClosestValueInBst(root, 12)
         self.assertEqual(expected, actual)
+
+if __name__ == '__main__':
+    unittest.main()

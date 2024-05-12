@@ -1,0 +1,9 @@
+{
+    "python.analysis.extraPaths": [
+        "./src/modules",
+        "/workspaces/niddy-bot/.venv/lib/python3.11/site-packages",
+        "./coding_pattern",
+        "./binary_search_trees",
+        "./binary_search_trees"
+    ]
+}
