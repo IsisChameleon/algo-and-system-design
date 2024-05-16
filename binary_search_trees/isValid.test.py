@@ -1,5 +1,5 @@
 from BST import BST
-from isValid import isValid
+from isValidOptimized import isValidOptimized as isValid
 import unittest
 
 class TestProgram(unittest.TestCase):

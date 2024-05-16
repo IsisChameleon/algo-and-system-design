@@ -63,15 +63,8 @@ def find_k_most_frequent_words(words: list[str], k: int)-> list[str]:
 
     return k_most_frequent
 
-
-    
-
-
-
-
-
 """
-K Most Frequent Words in N log N time
+K Most Frequent Words in N log k time
 
 This module contains a function to find the k most frequent words in a list of words.
 The function will return a list of k words sorted by their frequency from highest to lowest.
@@ -81,20 +74,17 @@ If two words have the same frequency, the lexicographically smaller word comes f
 from collections import Counter
 from heapq import nlargest
 
-def find_k_most_frequent_words(words: list[str], k: int) -> list[str]:
+def find_k_most_frequent_words_optimised(words: list[str], k: int) -> list[str]:
     # Count the frequency of each word
     word_frequencies = Counter(words)
+    print(f'word_frequencies {word_frequencies} {type(word_frequencies)}')
+    print(f'work frequencies item {word_frequencies.items()}')
+    print(f'work frequencies item {[ (item[1], -ord(item[0][0])) for item in word_frequencies.items()]}')
 
     # Find the k most frequent words using nlargest from heapq,
     # which uses a heap and is O(N log k) where N is the number of unique words
-    k_most_common = nlargest(k, word_frequencies.items(), key=lambda item: (item[1], -ord(item[0][0])))
+    k_most_common = nlargest(k, word_frequencies.items(), key=lambda item: (item[1], [-ord(letter) for letter in item[0]]))
 
     # Extract the words and sort them by frequency and lexicographically
     result = [word for word, frequency in k_most_common]
     return result
-
-if __name__ == "__main__":
-    # Example usage:
-    WORDS = ["word1", "word2", "word1", "word3", "word2", "word1"]
-    K = 2
-    print(find_k_most_frequent_words(WORDS, K))

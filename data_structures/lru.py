@@ -27,19 +27,19 @@ class LRUCache:
 
     def get(self, key: int) -> int:
         if key in self.hashmap:
-            node = self.hashmap[key]
-            self._remove(node)
+            node = self.hashmap[key] # find node
+            self._remove(node) # move it to the front of the queue
             self._add(node)
             return node.value
         return None
 
-    def put(self, key, value):
-        if key in self.hashmap:
-            node = self.hashmap[key]
-            self._remove(node)
-        else:
-            node = Node(key, value)
-            self.hashmap[key] = node
+    # def put(self, key, value):
+    #     if key in self.hashmap:
+    #         node = self.hashmap[key]
+    #         self._remove(node)
+    #     else:
+    #         node = Node(key, value)
+    #         self.hashmap[key] = node
 
     def put(self, key: int, value: int) -> None:
         if key in self.hashmap:
