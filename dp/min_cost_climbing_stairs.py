@@ -48,6 +48,6 @@ def minCostClimbingStairs(cost: list[int]) -> int:
     """
     minPayment = [0]*N
     for i in range(2, len(cost)):
-        minPayment[i]=minPayment[i-2]+cost[i], minPayment[i-1]
+        minPayment[i]=min(minPayment[i-2]+cost[i], minPayment[i-1])
 
     return minPayment[-1]

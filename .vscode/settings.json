@@ -7,6 +7,8 @@
         "./binary_search_trees",
         "./binary_search_trees",
         "./coding_pattern",
-        "./coding_pattern"
+        "./coding_pattern",
+        "./dp",
+        "./data_structures"
     ]
 }
