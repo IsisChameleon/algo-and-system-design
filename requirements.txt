@@ -3,3 +3,5 @@ matplotlib
 ipyevents #snake game
 ipywidgets #snake game
 pydantic
+networkx
+scikit-learn

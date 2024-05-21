@@ -39,15 +39,22 @@ def minCostClimbingStairs(cost: list[int]) -> int:
     if N==2:
         return min(cost[0], cost[1])
     
-    if N==3:
-        return min(cost[0]+cost[2], cost[1])
-    
     """
     state == position i
-    minPayment(i) = minPayment[i-2]+cost[i], minPayment[i-1]
+    minPayment(i) = min(minPayment[i-2]+cost[i], minPayment[i-1])
     """
-    minPayment = [0]*N
-    for i in range(2, len(cost)):
-        minPayment[i]=min(minPayment[i-2]+cost[i], minPayment[i-1])
+    minPayment = [0]*(N)
+    minPayment[0]=cost[0]
+    minPayment[1]=cost[1]
 
-    return minPayment[-1]
+    print(f'Starting minPayment {minPayment}')
+    print(f'++++++++++++++++++++++++++++++++++++++++')
+    print(f'             {cost}')
+    print(f'++++++++++++++++++++++++++++++++++++++++')
+
+    for i in range(2, len(cost)):
+        print(f'{i}: cost {cost[i]}.. minPayment {minPayment}')
+        minPayment[i]=min(minPayment[i-2], minPayment[i-1]) + cost[i]
+        print(f'{i}:                .. minPayment {minPayment}')
+
+    return min(minPayment[-1], minPayment[-2])
