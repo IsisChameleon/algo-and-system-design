@@ -1,2 +1,4 @@
 .aider*
 __pycache__
+coding_pattern/voting/backend/node_modules
+.env

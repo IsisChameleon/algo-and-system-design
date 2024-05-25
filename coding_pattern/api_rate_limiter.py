@@ -72,7 +72,7 @@ class APIRateLimiterTokenBucket(APIRateLimiterBase):
     def can_request_go_through(self, request: Request):
         self.token_buckets[self._get_rate_limited_key(request)].get_token()
 
-    def get_retry_after_timespan_in_second(self, request: Request):
+    def get_retry_after_message(self, request: Request):
         key = self._get_rate_limited_key(request)
         return int(self.token_buckets[key].timespan_for_refill.total_seconds())
 
@@ -104,7 +104,7 @@ class APIRateLimiterMiddleware():
             return self.wsgi_app(environ, start_response)
         else:
             # Update the Retry-After header and return a 429 Too Many Requests response
-            retry_after = int(self.token_buckets[client_id].timespan_for_refill.total_seconds())
+            retry_after = self.rate_limiter.get_retry_after_message(request)
             # response = make_response("Too Many Requests", 429)
             response = Response("Too Many Requests", mimetype= 'text/plain', status=429)
             response.headers['Retry-After'] = str(retry_after)

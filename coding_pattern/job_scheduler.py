@@ -86,7 +86,7 @@ class JobScheduler:
     def __init__(self):
         self.job_queue = []  # Priority queue of jobs
         self.job_history = defaultdict(list)  # Job execution history
-        self.job_dependencies = defaultdict(set)  # Job dependencies
+        self.job_dependencies = defaultdict(set)  # Job dependencies key = a job, value : set of job dependencies
 
     def submit_job(self, job):
         # Add job to the priority queue and update dependencies
@@ -105,11 +105,11 @@ class JobScheduler:
                 break
 
     def run_job(self, job):
-        # Simulate job execution
+        # Simulate job execution by moving it to history
         print(f"Running job {job.job_id}")
         self.job_history[job.job_id].append(datetime.now())
 
-        # Update dependencies for other jobs
+        # Remove this job that has just run from the dependencies of other job
         for dep_id in self.job_dependencies:
             if job.job_id in self.job_dependencies[dep_id]:
                 self.job_dependencies[dep_id].remove(job.job_id)

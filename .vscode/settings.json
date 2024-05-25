@@ -10,6 +10,9 @@
         "./coding_pattern",
         "./dp",
         "./data_structures",
-        "./coding_pattern"
+        "./coding_pattern",
+        "./data_structures/sorting",
+        "./data_structures",
+        "./dp"
     ]
 }

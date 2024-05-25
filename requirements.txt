@@ -5,3 +5,9 @@ ipywidgets #snake game
 pydantic
 networkx
 scikit-learn
+fastapi
+supabase
+flask 
+flask-sqlalchemy 
+psycopg2-binary
+ipykernel
